@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cafe Login Page</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+
+</head>
+<body>
+
+$(if chap-id)
+<form name="sendin" action="$(link-login-only)" method="post">
+    <input type="hidden" name="username" />
+    <input type="hidden" name="password" />
+    <input type="hidden" name="dst" value="$(link-orig)" />
+    <input type="hidden" name="popup" value="true" />
+</form>
+
+<script type="text/javascript" src="/md5.js"></script>
+<script type="text/javascript">
+    <!--
+    function doLogin() {
+        document.sendin.username.value = document.login.username.value;
+        document.sendin.password.value = hexMD5('$(chap-id)' + document.login.password.value + '$(chap-challenge)');
+        document.sendin.submit();
+        return false;
+    }
+    //-->
+</script>
+$(endif)
+
+
+<div class="container">
+    <div class="header clearfix">
+        <nav>
+            <ul class="nav nav-pills pull-right">
+                <li role="presentation" class="active"><a href="$(link-login-only)?target=lv&amp;dst=$(link-orig-esc)">Latviski</a></li>
+            </ul>
+        </nav>
+        <h3 class="text-muted">Mikrotik HotSpot</h3>
+    </div>
+
+    <div class="jumbotron">
+        <h1>Welcome to Mikrotik HotSpot Service</h1>
+        <p class="lead">You can enjoy your coffee and browse internet in our Free WiFi</p>
+
+    </div>
+
+    <div class="col-md-12">
+        <h1>Enter Coupon Code:</h1>
+    </div>
+    <div class="col-md-12">
+    $(if error)<div class="alert alert-danger">$(error)</div>$(endif)
+    <form name="login" action="$(link-login-only)" method="post"
+         $(if chap-id) onSubmit="return doLogin()" $(endif)>
+        <input type="hidden" name="dst" value="$(link-orig)" />
+        <input type="hidden" name="popup" value="true" />
+
+    <div class="col-md-5">
+        <input class="form-control" name="username" type="tel" value="$(username)">
+
+    </div>
+
+                <input style="width: 80px" name="password" type="hidden" value="secretpass"/>
+                <input class="col-md-3 col-sm-12 col-xs-12 btn btn-primary" type="submit" value="Login" />
+
+    </form>
+    </div>
+    <hr>
+    <div class="row">
+        <footer class="footer">
+            <p>&copy; 2016 Wispcasts, Inc.</p>
+        </footer>
+    </div>
+
+
+</div> <!-- /container -->
+
+
+</body>
+</html>
